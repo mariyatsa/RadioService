@@ -1,13 +1,11 @@
 package ru.netology;
 
 public class Radio {
-
+    // громкость звука
     public int currentVolume;
-
     public int getIncreaseVolume() {
         return currentVolume;
     }
-
     public void setIncreaseVolume(int newCurrentVolume) {
         if (newCurrentVolume < 100) {
             currentVolume = newCurrentVolume + 1;
@@ -15,23 +13,27 @@ public class Radio {
         if (newCurrentVolume >= 100) {
             currentVolume = 100;
         }
-        if (newCurrentVolume < 0) {
+        if (newCurrentVolume <= 0) {
             currentVolume = 0;
         }
     }
-
+    public void setVolumePrev (int newVolumePrev) {
+        if (newVolumePrev < 100) {
+            currentVolume = newVolumePrev - 1;
+        }
+    }
+    // Радио станция
     public int stationRadio;
-
     public int getStationRadio() {
         return stationRadio;
     }
 
     public void rewindStationRadio(int newStationRadio) {
         if (newStationRadio > 9) {
-            newStationRadio = 0;
+            stationRadio = 0;
         }
         if (newStationRadio < 0) {
-            newStationRadio = 9;
+           stationRadio = 9;
         }
     }
 

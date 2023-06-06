@@ -5,31 +5,40 @@ import org.junit.jupiter.api.Test;
 
 public class RadioTest {
     @Test
-    public void volumeRadioMin() {
+    public void volumeRadioMin() { //  уровень громкости звука достиг минимального значения
         Radio service = new Radio();
 
         service.setIncreaseVolume(0);
 
-        int expected = 1;
+        int expected = 0;
         int actual = service.getIncreaseVolume();
 
         Assertions.assertEquals(expected, actual);
     }
 
     @Test
-    public void whenTheValueIsZero() {
+    public void switchingNext () { // увеличение громкости звука на 1
         Radio service = new Radio();
 
-        service.setIncreaseVolume(0);
+        service.setIncreaseVolume(1);
 
-        int expected = 1;
+        int expected = 2;
         int actual = service.getIncreaseVolume();
 
         Assertions.assertEquals(expected, actual);
     }
+    @Test
+    public  void switchingPrev () { // уменьшение громкости на 1
+        Radio service = new Radio();
+        service.setVolumePrev(5);
+
+        int expected = 4;
+        int actual = service.getIncreaseVolume();
+        Assertions.assertEquals(expected, actual);
+    }
 
     @Test
-    public void volumeRadioMax() {
+    public void volumeRadioMax() { // уровень громкости звука достиг максимального значения
         Radio service = new Radio();
 
         service.setIncreaseVolume(100);
@@ -39,20 +48,20 @@ public class RadioTest {
 
         Assertions.assertEquals(expected, actual);
     }
-
+    // Радио станции
     @Test
-    public void radioStation() {
+    public void radioStation() { // переключение на следующую станцию
         Radio service = new Radio();
-        service.setStationRadio(0);
+        service.setStationRadio(2);
 
-        int expected = 1;
+        int expected = 3;
         int actual = service.getStationRadio();
 
         Assertions.assertEquals(expected, actual);
     }
 
     @Test
-    public void settingUpRadioStation() {
+    public void settingUpRadioStation() { // Выставленный номер радиостанции
         Radio service = new Radio();
         service.settingStationRadio(5);
 
@@ -63,13 +72,22 @@ public class RadioTest {
     }
 
     @Test
-    public void currentRadioStation0() {
+    public void currentRadioStationNext() { //  радиостанция 9 и клиент нажал на кнопку next
         Radio service = new Radio();
         service.rewindStationRadio(10);
 
         int expected = 0;
         int actual = service.getStationRadio();
 
+        Assertions.assertEquals(expected, actual);
+    }
+    @Test
+    public void currentRadioStationPrev () { // текущая радиостанция 0 и клиент нажал на кнопку prev
+        Radio service = new Radio();
+        service.rewindStationRadio(-1);
+
+        int expected = 9;
+        int actual = service.getStationRadio();
         Assertions.assertEquals(expected, actual);
     }
 }
