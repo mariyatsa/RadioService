@@ -36,6 +36,26 @@ public class RadioTest {
         int actual = service.getIncreaseVolume();
         Assertions.assertEquals(expected, actual);
     }
+    @Test
+    public  void switching () { // уменьшение громкости на 1
+        Radio service = new Radio();
+        service.setVolumePrev(101);
+
+        int expected = 0;
+        int actual = service.getIncreaseVolume();
+        Assertions.assertEquals(expected, actual);
+    }
+
+    @Test
+    public  void volumeReductionAtZero () { // уменьшение громкости при нуле
+        Radio service = new Radio();
+        service.setVolumePrev(-1);
+
+        int expected = 0;
+        int actual = service.getIncreaseVolume();
+        Assertions.assertEquals(expected, actual);
+
+    }
 
     @Test
     public void volumeRadioMax() { // уровень громкости звука достиг максимального значения
@@ -59,13 +79,32 @@ public class RadioTest {
 
         Assertions.assertEquals(expected, actual);
     }
+    @Test
+    public void radioStationNext() { // переключение на следующую станцию
+        Radio service = new Radio();
+        service.setStationRadio(9);
 
+        int expected = 0;
+        int actual = service.getStationRadio();
+
+        Assertions.assertEquals(expected, actual);
+    }
     @Test
     public void settingUpRadioStation() { // Выставленный номер радиостанции
         Radio service = new Radio();
         service.settingStationRadio(5);
 
-        int expected = 5; //должна быть текущая станция, но мы не знаем какая она
+        int expected = 5; 
+        int actual = service.getStationRadio();
+
+        Assertions.assertEquals(expected, actual);
+    }
+    @Test
+    public void settingUpRadioStationDontNotExist () { // выставление радиостанции которой не существует
+        Radio service = new Radio();
+        service.settingStationRadio(15);
+
+        int expected = 0;
         int actual = service.getStationRadio();
 
         Assertions.assertEquals(expected, actual);

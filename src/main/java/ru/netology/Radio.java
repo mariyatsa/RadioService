@@ -21,6 +21,9 @@ public class Radio {
         if (newVolumePrev < 100) {
             currentVolume = newVolumePrev - 1;
         }
+        if (newVolumePrev < 0) {
+            currentVolume = 0;
+        }
     }
     // Радио станция
     public int stationRadio;
@@ -44,9 +47,6 @@ public class Radio {
     }
 
     public void settingStationRadio(int newSationRadio) {
-        if (newSationRadio < 0) {
-            return;
-        }
         if (newSationRadio > 9) {
             return;
         }
