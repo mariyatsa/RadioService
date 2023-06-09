@@ -185,6 +185,14 @@ public class RadioTest {
 
         Assertions.assertEquals(expected, actual);
     }
+    @Test
+    public void stationNew () {
+        Radio service = new Radio(10);
+        service.setStationRadio(9);
 
+        int expected = 9;
+        int actual = service.getStationRadio();
 
+        Assertions.assertEquals(expected, actual);
+    }
 }
