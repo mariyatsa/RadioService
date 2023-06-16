@@ -2,7 +2,7 @@ package ru.netology;
 
 public class Radio {
     // громкость звука
-    public int currentVolume;
+    private int currentVolume;
 
     public int getCurrentVolume() {
         return currentVolume;
@@ -29,7 +29,7 @@ public class Radio {
     }
 
     // Радио станция
-    public int stationRadio;
+    private int stationRadio;
 
     public int getStationRadio() {
         return stationRadio;
